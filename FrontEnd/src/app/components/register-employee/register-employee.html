@@ -1,0 +1,102 @@
+<div class="form-container">
+  <h2>Register New Employee</h2>
+
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <form #employeeForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- <div class="form-group">
+      <label for="employeeId">Employee ID (8 digits)</label>
+      <input type="text" id="employeeId" name="employeeId" [(ngModel)]="employee.employeeId" 
+             required pattern="^\d{8}$" #employeeIdField="ngModel">
+      
+      <div *ngIf="employeeIdField.invalid && (employeeIdField.dirty || employeeIdField.touched)" class="error-message">
+        <div *ngIf="employeeIdField.errors?.['required']">Employee ID is required.</div>
+        <div *ngIf="employeeIdField.errors?.['pattern']">Employee ID must be exactly 8 numeric digits.</div>
+      </div>
+    </div> -->
+
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="employee.firstName" 
+             required maxlength="20" #firstNameField="ngModel" pattern="^[a-zA-Z\s]+$">
+
+      <div *ngIf="firstNameField.invalid && (firstNameField.dirty || firstNameField.touched)" class="error-message">
+        First Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="employee.lastName" 
+             required maxlength="20" #lastNameField="ngModel" pattern="^[a-zA-Z\s]+$">
+
+      <div *ngIf="lastNameField.invalid && (lastNameField.dirty || lastNameField.touched)" class="error-message">
+        Last Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="employee.email" 
+             required email #emailField="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+             
+      <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="error-message">
+        <div *ngIf="emailField.errors?.['required']">Email is required.</div>
+        <div *ngIf="emailField.errors?.['pattern']">Please enter a valid email format.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="employee.password" 
+             required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" #passwordField="ngModel">
+
+      <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="error-message">
+        <div *ngIf="passwordField.errors?.['required']">Password is required.</div>
+        <div *ngIf="passwordField.errors?.['pattern']">
+          Password must contain 8 characters [1 lowercase, 1 uppercase, 1 number, 1 special character ($, %, !, *, ?, &)]
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" 
+             required #dobField="ngModel" [max]="today">
+
+      <div *ngIf="dobField.invalid && (dobField.dirty || dobField.touched)" class="error-message">
+        Date of Birth is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="department">Department</label>
+      <input type="text" id="department" name="department" [(ngModel)]="employee.department" 
+             required #departmentField="ngModel">
+
+      <div *ngIf="departmentField.invalid && (departmentField.dirty || departmentField.touched)" class="error-message">
+        Department is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea id="address" name="address" [(ngModel)]="employee.address" 
+                required maxlength="100" #addressField="ngModel"></textarea>
+
+      <div *ngIf="addressField.invalid && (addressField.dirty || addressField.touched)" class="error-message">
+        Address is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!employeeForm.valid">Register Employee</button>
+    <br><br>
+    <button  type="button" class="back-button" (click)="goBack()">Back to Dashboard</button>
+  </form>
+</div>

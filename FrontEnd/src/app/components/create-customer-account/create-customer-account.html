@@ -1,0 +1,146 @@
+<div class="form-container">
+  <h2>Create New Customer Account</h2>
+  
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- Customer SSN ID -->
+    <div class="form-group">
+      <label for="customerSSNId">Customer SSN ID</label>
+      <input type="text" id="customerSSNId" name="customerSSNId" [(ngModel)]="customer.customerSSNId" 
+             required #ssnField="ngModel" pattern="^\d{8}$" readonly>
+      <!-- <div *ngIf="ssnField.invalid && (ssnField.dirty || ssnField.touched)" class="error-message">
+        SSN ID is required.
+      </div>
+           <div *ngIf="ssnField.errors?.['pattern']"  class="error-message">Customer SSN ID must be exactly 8 numeric digits.</div> -->
+           <button class="generateBtn" type="button" (click)="generateSSNId()" [disabled]="isSsnIdGenerated">Generate SSN ID</button>
+    </div>
+
+    <!-- Customer Name -->
+    <div class="form-group">
+      <label for="name">Customer Name</label>
+      <input type="text" id="name" name="name" [(ngModel)]="customer.name" 
+             required pattern="^[a-zA-Z\s]+$" #nameField="ngModel">
+      <div *ngIf="nameField.invalid && (nameField.dirty || nameField.touched)" class="error-message">
+        <div *ngIf="nameField.errors?.['required']">Customer Name is required.</div>
+        <div *ngIf="nameField.errors?.['pattern']">Name can only contain letters and spaces.</div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="customer.email" 
+             required email #emailField="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+      <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="error-message">
+        <div *ngIf="emailField.errors?.['required']">Email is required.</div>
+        <div *ngIf="emailField.errors?.['pattern']">Please enter a valid email format.</div>
+      </div>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="customer.dateOfBirth" 
+             required #dobField="ngModel">
+      <div *ngIf="dobField.invalid && (dobField.dirty || dobField.touched)" class="error-message">
+        Date of Birth is required.
+      </div>
+    </div>
+
+    <!-- Contact Number -->
+    <div class="form-group">
+      <label for="contactNumber">Contact Number</label>
+      <input type="text" id="contactNumber" name="contactNumber" [(ngModel)]="customer.contactNumber" 
+             required pattern="^(?!.*(\d)\1{2})([6-9]\d{9})$" #contactField="ngModel">
+      <div *ngIf="contactField.invalid && (contactField.dirty || contactField.touched)" class="error-message">
+        <div *ngIf="contactField.errors?.['required']">Contact Number is required.</div>
+        <div *ngIf="contactField.errors?.['pattern']">Enter a valid 10-digit number (starts with 6-9).</div>
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea id="address" name="address" [(ngModel)]="customer.address" 
+                required #addressField="ngModel"></textarea>
+      <div *ngIf="addressField.invalid && (addressField.dirty || addressField.touched)" class="error-message">
+        Address is required.
+      </div>
+    </div>
+
+    <!-- IFSC Code -->
+    <div class="form-group">
+      <label for="ifscCode">IFSC Code</label>
+      <input type="text" id="ifscCode" name="ifscCode" [(ngModel)]="customer.ifscCode" 
+             required #ifscField="ngModel">
+      <div *ngIf="ifscField.invalid && (ifscField.dirty || ifscField.touched)" class="error-message">
+        IFSC Code is required.
+      </div>
+    </div>
+
+    <!-- Initial Balance -->
+    <div class="form-group">
+      <label for="accountBalance">Initial Balance</label>
+      <input type="number" id="accountBalance" name="accountBalance" [(ngModel)]="customer.accountBalance" 
+             required #balanceField="ngModel" min="0">
+      <div *ngIf="balanceField.invalid && (balanceField.dirty || balanceField.touched)" class="error-message">
+        <div *ngIf="balanceField.errors?.['min']">Amount must be positive.</div>
+      </div>
+    </div>
+
+    
+    <!-- Aadhar Number -->
+    <div class="form-group">
+      <label for="aadharCardNumber">Aadhar Number (12 digits)</label>
+      <input type="text" id="aadharCardNumber" name="aadharCardNumber" [(ngModel)]="customer.aadharCardNumber" 
+             required pattern="^\d{12}$" #aadharField="ngModel">
+      <div *ngIf="aadharField.invalid && (aadharField.dirty || aadharField.touched)" class="error-message">
+        <div *ngIf="aadharField.errors?.['required']">Aadhar Number is required.</div>
+        <div *ngIf="aadharField.errors?.['pattern']">Must be exactly 12 numeric digits.</div>
+      </div>
+    </div>
+
+    <!-- PAN Card No -->
+    <div class="form-group">
+      <label for="panCardNo">PAN Card No</label>
+      <input type="text" id="panCardNo" name="panCardNo" [(ngModel)]="customer.panCardNo" 
+             required pattern="^[A-Z]{4}[0-9]{4}[A-Z]{1}$" #panField="ngModel">
+      <div *ngIf="panField.invalid && (panField.dirty || panField.touched)" class="error-message">
+        <div *ngIf="panField.errors?.['required']">PAN number is required.</div>
+        <div *ngIf="panField.errors?.['pattern']">Enter a valid PAN format (e.g., ABDE1234F).</div>
+      </div>
+    </div>
+
+    <!-- Gender -->
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" [(ngModel)]="customer.gender" required #genderField="ngModel">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div *ngIf="genderField.invalid && (genderField.dirty || genderField.touched)" class="error-message">
+        Gender is required.
+      </div>
+    </div>
+
+    <!-- Marital Status -->
+    <div class="form-group">
+      <label for="maritalStatus">Marital Status</label>
+      <select id="maritalStatus" name="maritalStatus" [(ngModel)]="customer.maritalStatus" 
+              required #maritalField="ngModel">
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+        <option value="divorced">Divorced</option>
+      </select>
+      <div *ngIf="maritalField.invalid && (maritalField.dirty || maritalField.touched)" class="error-message">
+        Marital Status is required.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!customerForm.valid">Create Account</button>
+        <br><br>
+    <button type="button" class="back-button" (click)="goBack()">Back to Dashboard</button>
+  </form>
+</div>

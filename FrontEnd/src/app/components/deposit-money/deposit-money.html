@@ -1,0 +1,26 @@
+<div class="form-container">
+  <h2>Deposit Money</h2>
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <form #depositForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="accountNumber">Customer Account Number</label>
+      <input type="text" id="accountNumber" name="accountNumber" [(ngModel)]="depositData.accountNumber" pattern="^\d{13}$" required #accountField="ngModel">
+      <div *ngIf="accountField.invalid && (accountField.dirty || accountField.touched)" class="error-message">
+        <div *ngIf="accountField.errors?.['required']">Account Number is required.</div>
+        <div *ngIf="accountField.errors?.['pattern']">Account Number must be exactly 13 numeric digits.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" name="amount" [(ngModel)]="depositData.amount" required min="500" #amountField="ngModel">
+      <div *ngIf="amountField.invalid && (amountField.dirty || amountField.touched)" class="error-message">
+        <div *ngIf="amountField.errors?.['required']">Amount is required.</div>
+        <div *ngIf="!amountField.errors?.['min']">Minimum Deposit amount is 500.</div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!depositForm.valid" class="action-btn">Deposit</button>
+    <br><br>
+    <button type="button" class="back-button" (click)="goBack()">Back to Dashboard</button>
+  </form>
+</div>

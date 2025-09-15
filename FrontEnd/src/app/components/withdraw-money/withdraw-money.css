@@ -1,0 +1,99 @@
+/* The container for the entire login form */
+.form-container {
+  width: 100%;
+  max-width: 450px; /* Set a max-width for the form */
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: calc(var(--border-radius) / 2);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+button[type="submit"],button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: calc(var(--border-radius) / 2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover:not(:disabled) ,button[type="button"]:hover:not(:disabled){
+  background-color: #0b5ed7; /* Darker blue on hover */
+}
+
+button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+}
+
+.extra-links {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.extra-links a {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: calc(var(--border-radius) / 2);
+}
+.success-message{
+   color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: calc(var(--border-radius) / 2);
+  text-align: center;
+  font-weight:500;
+}
+

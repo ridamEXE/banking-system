@@ -1,0 +1,21 @@
+# Compiled files
+/target/
+*.class
+
+# Log files
+*.log
+
+# Node dependencies
+/FrontEnd/node_modules/
+/FrontEnd/dist/
+/FrontEnd/.angular/
+
+# IDE files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+
+# Local databases
+*db/

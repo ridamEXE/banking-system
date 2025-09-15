@@ -1,0 +1,37 @@
+<p>view-customers works!</p>
+<div class="container">
+  <h2>All Customer Accounts</h2>
+  <table class="customer-table">
+    <thead>
+      <tr>
+        <th>Customer ID</th>
+        <th>Account Number</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact Number</th>
+        <th>Balance</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{ customer.customerId }}</td>
+        <td>{{ customer.accountNumber }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.contactNumber }}</td>
+        <td>{{ customer.accountBalance }}</td>
+        <td>
+          <button class="edit-button" (click)="editCustomer(customer)">Edit</button>
+          <button class="delete-button" (click)="deleteCustomer(customer.customerId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    <div class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage + 1 >= totalPages">Next</button>
+  </div>
+  <button class="back-button" (click)="goBack()">Back to Dashboard</button>
+</div>

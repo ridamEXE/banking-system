@@ -1,0 +1,11 @@
+<div class="form-container">
+  <h2>View Balance</h2>
+  <div *ngIf="successMessage" class="success-message">Your account balance is {{ accountBalance }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <form #transferForm="ngForm" (ngSubmit)="onSubmit()">
+    <br><br>
+    <button type="submit" [disabled]="!transferForm.valid">View Balance</button>
+    <br><br>
+    <button type="button" class="back-button" (click)="goBack()">Back to Dashboard</button>
+  </form>
+</div>

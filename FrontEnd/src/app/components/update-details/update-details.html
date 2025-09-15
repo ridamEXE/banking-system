@@ -1,0 +1,67 @@
+<div class="form-container">
+  <h2>Update Personal Details</h2>
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <form #updateForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="details.email" required #emailField="ngModel"
+        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.{1}[a-zA-Z]{2,}$">
+      <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="error-message">
+        <div *ngIf="emailField.errors?.['required']">Email is required.</div>
+        <div *ngIf="emailField.errors?.['pattern']">Please enter a valid email format.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="details.dateOfBirth" required
+        #dobField="ngModel">
+      <div *ngIf="dobField.invalid && (dobField.dirty || dobField.touched)" class="error-message">
+        Date of Birth is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <textarea id="address" name="address" [(ngModel)]="details.address" required #addressField="ngModel"></textarea>
+      <div *ngIf="addressField.invalid && (addressField.dirty || addressField.touched)" class="error-message">
+        Address is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="maritalStatus">Marital Status</label>
+      <select id="maritalStatus" name="maritalStatus" [(ngModel)]="details.maritalStatus" required
+        #maritalField="ngModel">
+        <option value="single">Single</option>
+        <option value="married">Married</option>
+        <option value="divorced">Divorced</option>
+      </select>
+      <div *ngIf="maritalField.invalid && (maritalField.dirty || maritalField.touched)" class="error-message">
+        Marital Status is required.
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="password">Confirm with Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="details.password" required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" #passwordField="ngModel">
+      
+      <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="error-message">
+        <div *ngIf="passwordField.errors?.['required']">Password is required.</div>
+        <div *ngIf="passwordField.errors?.['pattern']">
+          Password must contain 8 characters [1 lowercase, 1 uppercase, 1 number, 1 special character ($, %, !, *, ?,
+          &)]
+        </div>
+
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!updateForm.valid">Update Details</button>
+    <br><br>
+    <button type="button" class="back-button" (click)="goBack()">Back to Dashboard</button>
+  </form>
+</div>

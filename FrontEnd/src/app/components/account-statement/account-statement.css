@@ -1,0 +1,64 @@
+
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border-radius: 10px;
+}
+.statement-table ,.statement-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.statement-table th, .statement-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.statement-table td{
+    text-align: center;
+  
+}
+.statement-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+.back-button:hover  {
+  background-color:red;
+  color: white;
+}
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.statement-table .credit {
+  color: green;
+}
+.statement-table .debit {
+  color: red;
+}
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.pagination-controls button {
+  padding: 8px 16px;
+  cursor: pointer;
+}

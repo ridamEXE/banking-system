@@ -1,0 +1,29 @@
+<div class="dashboard-container">
+  <div class="header">
+    <h1>Customer Dashboard</h1>
+
+    <!-- <button class="logout-button" (click)="logout()">Logout</button> -->
+  </div>
+  <p>Welcome!</p>
+  <div class="actions">
+    <div class="btn-block">
+      <button (click)="goToViewBalance()">View Balance</button>
+      <img src="images/balance.png" alt="">
+    </div>
+    <div class="btn-block">
+      <button (click)="goToTransfer()">Transfer Money</button>
+      <img src="images/transfer.png" alt="">
+    </div>
+    <div class="btn-block">
+      <button (click)="goToAccountStatement()">Account Statement</button>
+      <img src="images/history.png" alt="">
+    </div>
+    <div class="btn-block">
+
+      <button (click)="goToUpdateDetails()">Update Personal Details</button>
+      <img src="images/update-details.png" alt="">
+
+    </div>
+    <!-- <button (click)="goToViewCustomers()"> View all Active Accounts</button> -->
+  </div>
+</div>

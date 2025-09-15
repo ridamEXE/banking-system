@@ -1,0 +1,40 @@
+/* Import a professional font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Define CSS variables for a consistent color scheme */
+:root {
+  --primary-color: #0d6efd; /* A modern blue */
+  --secondary-color: #6c757d; /* A neutral grey */
+  --bg-color: #f8f9fa;      /* A light grey background */
+  --text-color: #212529;    /* Dark text for readability */
+  --header-bg: #ffffff;     /* White header */
+  --footer-bg: #343a40;     /* Dark footer */
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+html, body{
+  height: 100% !important;
+}
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.form-container,.login-container{
+  min-width: 600px !important;
+}

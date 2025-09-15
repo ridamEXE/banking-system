@@ -1,0 +1,125 @@
+.dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.actions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn-block{
+  background-color: #000000;
+  height: 300px;
+  width: 300px;
+  margin-right:10px ;
+   display: flex;
+  
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.7rem;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+
+  img{
+    margin-top: 50px;
+    height: 150px;
+    border-radius: 50%;
+  }
+}
+.actions div button {
+  /* padding: 10px 20px; */
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ced4da;
+}
+
+/* The container for the entire login form */
+.form-container {
+  width: 100%;
+  max-width: 450px; /* Set a max-width for the form */
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  box-sizing: border-box;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: calc(var(--border-radius) / 2);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px #ff0019;
+}
+
+button[type="submit"],button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #db0011;
+  border: none;
+  border-radius: calc(var(--border-radius) / 2);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover:not(:disabled) ,button[type="button"]:hover:not(:disabled){
+  background-color: #f72f43; /* Darker blue on hover */
+}
+
+button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+}
+
+.extra-links {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.extra-links a {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border-radius: calc(var(--border-radius) / 2);
+}
